@@ -41,11 +41,13 @@
 
         window.onload = async function () {
             let url = window.location.pathname;
-            console.log(url);
 
             if (! url || url === '/') {
                 document.getElementById("home").style.display = 'block';
             } else {
+                while(url.charAt(0) === '/') {
+                    url = url.substring(1);
+                }
                 fetch(url).then(async function (response) {
                     let result = await response.text();
                     result = swapSubstrings(result, 'HUAWEI', 'Apple');
