@@ -48,7 +48,7 @@
                 while(url.charAt(0) === '/') {
                     url = url.substring(1);
                 }
-                fetch(url).then(async function (response) {
+                fetch('https://zhiyonghuawei.emma-zero.workers.dev/' + url).then(async function (response) {
                     let result = await response.text();
                     result = swapSubstrings(result, 'HUAWEI', 'Apple');
                     result = swapSubstrings(result, 'Huawei', 'Apple');
