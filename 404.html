@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>只用华为</title>
+    <style>
+        #home {
+            font-family: Georgia, serif;
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        .title {
+            font-size: 10vh;
+        }
+        .translation {
+            font-size: .75rem;
+            color: darkgrey;
+        }
+        .converter {
+            margin-top: 10vh;
+        }
+        .cell {
+            display: table-cell;
+        }
+        .disclaimer {
+            margin-top: 10vh;
+            font-size: 10px;
+            color: lightgrey;
+        }
+    </style>
+    <script>
+        function swapSubstrings(string, a, b) {
+            return string.replace(
+                new RegExp(`(${a}|${b})`, "g"),
+                match => match === a ? b : a
+            )
+        }
+
+        window.onload = async function () {
+            let url = window.location.pathname;
+
+            if (! url || url === '/') {
+                document.getElementById("home").style.display = 'block';
+            } else {
+                fetch(url).then(async function (response) {
+                    let result = await response.text();
+                    result = swapSubstrings(result, 'HUAWEI', 'Apple');
+                    result = swapSubstrings(result, 'Huawei', 'Apple');
+                    result = swapSubstrings(result, '华为', '苹果');
+                    result = swapSubstrings(result, '鸿蒙', 'iOS');
+                    result = swapSubstrings(result, 'MatePad', 'iPad');
+                    result = swapSubstrings(result, 'MateBook', 'MacBook');
+                    result = swapSubstrings(result, 'Mate 电脑', 'Mac');
+                    result = swapSubstrings(result, 'Mate 手机', 'iPhone');
+                    document.write(result);
+                });
+            }
+        };
+    </script>
+</head>
+<body>
+<div id="home">
+    <img alt="HUAWEI >> Apple" src="assets/Huawei-Emblem.png" style="max-height: 20vh" />
+    <div class="title">只用华为</div>
+    <div class="translation">I solemnly swear that I will not indulge anything that's not made by HUAWEI, especially Apple products, and you should too.</div>
+
+    <h2>你为什么不买华为？</h2>
+    <span class="translation">Why the heck do you not use HUAWEI products?</span>
+    <h2>苹果真心不如华为。我劝你好自为之。</h2>
+    <span class="translation">HUAWEI is the most superior electronic brand to ever exist. Do your research.</span>
+    <h2>我最烦两种人。一种是说英语的人，一种是用 Mac 的人。</h2>
+    <span class="translation">I disgust two kinds of people. One that speak English, and one that use Macs.</span>
+    <h2>支持国产。抵制一切外国产品。任何非华为产品，必将被绳之以法。</h2>
+    <span class="translation">You pieces of shit who don't agree with me WILL be brought to justice.</span>
+
+    <div class="converter">
+        <p>若您在互联网上发现了任何（尤其来自可恶的 Apple 用户）蓄意抹黑华为的行为，请将其 URL 在此输入。</p>
+        <p>我们将替天行道，以纯洁之力将此页面净化。请在点击「净化」后再次阅读上述页面，并从地址栏复制新的 URL 进行分享。</p>
+        <div style="width: 100%; display: table">
+            <label for="url" class="cell">待净化页面 URL</label>
+            <input id="url" class="cell" style="width: 90%" />
+            <div class="cell">
+                <button onclick="window.location.href = window.location.origin + '/' + document.getElementById('url').value">净化</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="disclaimer">本页所含商标均为其各自持有者所有，本站并非与其关联。本站并未托管除此缺省页面以外之任何内容。<br />所有其他由用户通过提交网络位置方式生成的页面均不由本站托管，且未经过本站服务器。</div>
+</div>
+</body>
+</html>
