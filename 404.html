@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>只用华为</title>
     <style>
-        #home {
+        .centered {
             font-family: Georgia, serif;
             display: none;
             position: absolute;
@@ -46,6 +46,7 @@
             if (! url || url === '/') {
                 document.getElementById("home").style.display = 'block';
             } else {
+                document.getElementById("fetching").style.display = 'block';
                 while(url.charAt(0) === '/') {
                     url = url.substring(1);
                 }
@@ -71,6 +72,7 @@
                     result = swapSubstrings(result, 'Mate 电脑', 'Mac');
                     result = swapSubstrings(result, 'Mate', 'iPhone');
                     result = swapSubstrings(result, '任正非', '库克');
+                    
                     document.write(result);
                 });
             }
@@ -78,7 +80,7 @@
     </script>
 </head>
 <body>
-<div id="home">
+<div id="home" class="centered">
     <img alt="HUAWEI >> Apple" src="https://zhiyonghuawei.com/assets/Huawei-Emblem.png" style="max-height: 20vh" />
     <div class="title">只用华为</div>
     <div class="translation">I solemnly swear that I will not indulge anything that's not made by HUAWEI, especially Apple products, and you should too.</div>
@@ -93,7 +95,7 @@
     <span class="translation">You pieces of shit who don't agree with me WILL be brought to justice.</span>
 
     <div class="converter">
-        <p>若您在互联网上发现了任何（尤其来自可恶的 Apple 用户）蓄意抹黑华为的行为，请将其 URL 在此输入。</p>
+        <p>若阁下在互联网上发现了任何（尤其来自可恶的 Apple 用户）蓄意抹黑华为的行为，请将其 URL 在此输入。</p>
         <p>我们将替天行道，以纯洁之力将此页面净化。请在点击「净化」后再次阅读上述页面，并从地址栏复制新的 URL 进行分享。</p>
         <div style="width: 100%; display: table">
             <label for="url" class="cell">待净化页面 URL</label>
@@ -105,6 +107,12 @@
     </div>
 
     <div class="disclaimer">本页所含商标均为其各自持有者所有，本站并非与其关联。本站并未托管除此缺省页面以外之任何内容。<br />所有其他由用户通过提交网络位置方式生成的页面均不由本站托管，且未经过本站服务器。</div>
+</div>
+<div id="fetching" class="centered">
+    <h2>正在净化此页面，请稍候。</h2>
+    <h4>由「只用华为」（<a href="https://zhiyonghuawei.com">zhiyonghuawei.com</a>）强力驱动。</h4>
+    <h5>若阁下长时间停留在此页面，则说明阁下的浏览器与「只用华为」净化节点之网络连接未成功建立。</h5>
+    <h5>若阁下身处于中国人民共和国大陆，则可能由于不可抗力因素而无法使用「只用华为」净化服务，敬请谅解。</h5>
 </div>
 </body>
 </html>
