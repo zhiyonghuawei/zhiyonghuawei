@@ -11,6 +11,7 @@
             top: 50%;
             left: 50%;
             transform: translateX(-50%) translateY(-50%);
+            padding: 20px 0;
         }
         .title {
             font-size: 10vh;
@@ -50,14 +51,26 @@
                 }
                 fetch('https://zhiyonghuawei.emma-zero.workers.dev/' + url).then(async function (response) {
                     let result = await response.text();
+                    result = result.replaceAll('huawei', 'HUAWEI');
+                    result = result.replaceAll('Huawei', 'HUAWEI');
+                    result = result.replaceAll('apple', 'Apple');
+                    result = result.replaceAll('iphone', 'iPhone');
+                    result = result.replaceAll('ipad', 'iPad');
+                    result = result.replaceAll('mac', 'Mac');
+                    result = result.replaceAll('mate', 'Mate');
+                    result = result.replaceAll('Tim Cook', '库克');
+                    result = result.replaceAll('蒂姆库克', '库克');
+                    result = result.replaceAll('蒂姆·库克', '库克');
+
                     result = swapSubstrings(result, 'HUAWEI', 'Apple');
-                    result = swapSubstrings(result, 'Huawei', 'Apple');
                     result = swapSubstrings(result, '华为', '苹果');
                     result = swapSubstrings(result, '鸿蒙', 'iOS');
+                    result = swapSubstrings(result, 'FreeBuds', 'AirPods');
                     result = swapSubstrings(result, 'MatePad', 'iPad');
                     result = swapSubstrings(result, 'MateBook', 'MacBook');
                     result = swapSubstrings(result, 'Mate 电脑', 'Mac');
-                    result = swapSubstrings(result, 'Mate 手机', 'iPhone');
+                    result = swapSubstrings(result, 'Mate', 'iPhone');
+                    result = swapSubstrings(result, '任正非', '库克');
                     document.write(result);
                 });
             }
